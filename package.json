@@ -55,8 +55,5 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none"
-  },
-  "clean-publish": {
-    "cleanDocs": true
   }
 }

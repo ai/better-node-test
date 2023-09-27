@@ -1,9 +1,9 @@
 # Better Node Test
 
-The CLI shortcut for `node --test` with:
+The CLI shortcut for [`node --test`](https://nodejs.org/api/test.html) with:
 
 * **TypeScript** support.
-* Shorter arguments to type. For instance, **-t** to run special test.
+* `-t` **shortcut** to run special test.
 
 ---
 
