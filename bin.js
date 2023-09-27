@@ -50,7 +50,7 @@ for (let i = 2; i < process.argv.length; i++) {
 }
 
 if (files.length === 0) {
-  files = await findFiles('test', /\.test\.(js|ts)$/)
+  files = await findFiles('.', /\.test\.(js|ts)$/)
 }
 
 if (files.some(i => i.endsWith('.ts'))) {
