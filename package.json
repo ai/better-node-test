@@ -25,10 +25,10 @@
   },
   "scripts": {
     "test:lint": "eslint .",
-    "test:help": "node ./bin.js --help | ./test/find.js Usage",
-    "test:only": "node ./bin.js -t two | ./test/find.js '# skipped 1'",
-    "test:pathless": "node ./bin.js | ./test/find.js '# tests 2'",
-    "test:path": "node ./bin.js test/*.test.js | ./test/find.js '# tests 1'",
+    "test:help": "./bin.js --help | ./test/find.js Usage",
+    "test:only": "./bin.js -t two | ./test/find.js '# skipped 1'",
+    "test:pathless": "./bin.js | ./test/find.js '# tests 2'",
+    "test:path": "./bin.js test/*.test.js | ./test/find.js '# tests 1'",
     "test": "pnpm run /^test:/"
   },
   "devDependencies": {
