@@ -1,8 +1,12 @@
 {
   "name": "better-node-test",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "The CLI shortcut for node --test runner with TypeScript",
+  "keywords": [
+    "node",
+    "test",
+    "typescript"
+  ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/better-node-test",
