@@ -1,0 +1,62 @@
+{
+  "name": "better-node-test",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "license": "MIT",
+  "repository": "ai/better-node-test",
+  "sideEffects": false,
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/ai"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "bnt": "./bin.js"
+  },
+  "scripts": {
+    "test:lint": "eslint .",
+    "test:help": "node ./bin.js --help | ./test/find.js Usage",
+    "test:only": "node ./bin.js -t two | ./test/find.js '# skipped 1'",
+    "test:pathless": "node ./bin.js | ./test/find.js '# tests 2'",
+    "test:path": "node ./bin.js test/*.test.js | ./test/find.js '# tests 1'",
+    "test": "pnpm run /^test:/"
+  },
+  "devDependencies": {
+    "@logux/eslint-config": "^52.0.1",
+    "clean-publish": "^4.2.0",
+    "eslint": "^8.48.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-node-import": "^1.0.1",
+    "eslint-plugin-perfectionist": "^2.0.0",
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "tsm": "^2.3.0",
+    "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "extends": "@logux/eslint-config"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "jsxSingleQuote": false,
+    "quoteProps": "consistent",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "clean-publish": {
+    "cleanDocs": true
+  }
+}
