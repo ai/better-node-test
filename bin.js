@@ -6,7 +6,7 @@ import { lstat, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-let base = ['--test']
+let base = ['--test', '--test-reporter', 'spec']
 let env = { ...process.env }
 
 const IGNORE = new Set(['.git', 'node_modules'])
