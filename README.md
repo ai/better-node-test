@@ -23,10 +23,10 @@ Install CLI:
 npm install --save-dev better-node-test
 ```
 
-For TypeScript you will also need `tsm`:
+For TypeScript you will also need `tsx` (or you can use `tsm`):
 
 ```sh
-npm install --save-dev better-node-test tsm
+npm install --save-dev better-node-test tsx
 ```
 
 To run all tests with `*.test.ts` or `*.test.js`:
