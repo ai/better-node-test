@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { spawn } from 'node:child_process'
-import { existsSync } from 'node:fs'
 import { lstat, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -56,11 +55,18 @@ if (files.length === 0) {
 if (files.some(i => i.endsWith('.ts'))) {
   let loader
   if (typeof import.meta.resolve === 'function') {
-    let tsx = fileURLToPath(import.meta.resolve('tsx'))
-    let tsm = fileURLToPath(import.meta.resolve('tsm'))
-    if(existsSync(tsx)) loader = tsx
-    else if(existsSync(tsm)) loader = tsm
-    else {
+    let tsx, tsm
+    try {
+      tsx = import.meta.resolve('tsx')
+    } catch {}
+    try {
+      tsm = import.meta.resolve('tsm')
+    } catch {}
+    if (tsx) {
+      loader = fileURLToPath(tsx)
+    } else if (tsm) {
+      loader = fileURLToPath(tsm)
+    } else {
       process.stderr.write('Install `tsx` to run TypeScript tests\n')
       process.exit(1)
     }
