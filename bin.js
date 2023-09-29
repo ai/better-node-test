@@ -50,19 +50,22 @@ for (let i = 2; i < process.argv.length; i++) {
 }
 
 if (files.length === 0) {
-  files = await findFiles('.', /\.test\.(js|ts)$/)
+  files = await findFiles('.', /\.(test|spec)\.(js|ts)$/)
 }
 
 if (files.some(i => i.endsWith('.ts'))) {
   let loader
   if (typeof import.meta.resolve === 'function') {
-    loader = fileURLToPath(await import.meta.resolve('tsm'))
-    if (!existsSync(loader)) {
-      process.stderr.write('Install `tsm` to run TypeScript tests\n')
+    let tsx = fileURLToPath(import.meta.resolve('tsx'))
+    let tsm = fileURLToPath(import.meta.resolve('tsm'))
+    if(existsSync(tsx)) loader = tsx
+    else if(existsSync(tsm)) loader = tsm
+    else {
+      process.stderr.write('Install `tsx` to run TypeScript tests\n')
       process.exit(1)
     }
   } else {
-    loader = 'tsm'
+    loader = 'tsx'
   }
   base.push('--enable-source-maps', '--loader', loader)
   env.NODE_NO_WARNINGS = '1'
