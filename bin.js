@@ -56,13 +56,13 @@ if (files.length === 0) {
 if (files.some(i => i.endsWith('.ts'))) {
   let loader
   if (typeof import.meta.resolve === 'function') {
-    loader = fileURLToPath(await import.meta.resolve('tsm'))
+    loader = fileURLToPath(await import.meta.resolve('tsx'))
     if (!existsSync(loader)) {
-      process.stderr.write('Install `tsm` to run TypeScript tests\n')
+      process.stderr.write('Install `tsx` to run TypeScript tests\n')
       process.exit(1)
     }
   } else {
-    loader = 'tsm'
+    loader = 'tsx'
   }
   base.push('--enable-source-maps', '--loader', loader)
   env.NODE_NO_WARNINGS = '1'
