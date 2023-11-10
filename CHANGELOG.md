@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.3
+* Added `tsx` 4.0 support.
+
 ## 0.2
 * Added `tsx` as an optional TypeScript compiler (by Dan Kozlov).
 * Added `.spec.` files support (by Dan Kozlov).
