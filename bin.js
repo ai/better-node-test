@@ -73,7 +73,12 @@ if (files.some(i => i.endsWith('.ts'))) {
   } else {
     loader = 'tsx'
   }
-  base.push('--enable-source-maps', '--loader', loader)
+  base.push('--enable-source-maps')
+  if (process.version.startsWith('v18')) {
+    base.push('--loader', loader)
+  } else {
+    base.push('--import', loader)
+  }
   env.NODE_NO_WARNINGS = '1'
 }
 
