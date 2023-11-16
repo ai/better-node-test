@@ -74,7 +74,7 @@ if (files.some(i => i.endsWith('.ts'))) {
     loader = 'tsx'
   }
   base.push('--enable-source-maps')
-  if (process.version.startsWith('v18')) {
+  if (loader.includes('tsm') || process.version.startsWith('v18')) {
     base.push('--loader', loader)
   } else {
     base.push('--import', loader)
