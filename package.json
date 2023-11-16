@@ -1,6 +1,6 @@
 {
   "name": "better-node-test",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "The CLI shortcut for node --test runner with TypeScript",
   "keywords": [
     "node",
