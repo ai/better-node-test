@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.4.1
+* Remove all warning suppression for `tsx`.
+* Remove `jiti` support since it has no loader support yet.
+
 ## 0.4
 * Added `jiti` support.
 
