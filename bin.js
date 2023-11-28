@@ -76,7 +76,7 @@ if (files.some(i => i.endsWith('.ts'))) {
       process.exit(1)
     }
   } else {
-    loader = 'tsx'
+    loader = 'jiti'
   }
   base.push('--enable-source-maps')
   if (loader.includes('tsm') || process.version.startsWith('v18')) {
