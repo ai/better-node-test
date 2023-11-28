@@ -55,20 +55,20 @@ if (files.length === 0) {
 if (files.some(i => i.endsWith('.ts'))) {
   let loader
   if (typeof import.meta.resolve === 'function') {
-    let jiti, tsx, tsm
-    try {
-      jiti = import.meta.resolve('jiti')
-    } catch {}
+    let tsx, jiti, tsm
     try {
       tsx = import.meta.resolve('tsx')
     } catch {}
     try {
+      jiti = import.meta.resolve('jiti')
+    } catch {}
+    try {
       tsm = import.meta.resolve('tsm')
     } catch {}
-    if (jiti) {
-      loader = fileURLToPath(jiti)
-    } else if (tsx) {
+    if (tsx) {
       loader = fileURLToPath(tsx)
+    } else if (jiti) {
+      loader = fileURLToPath(jiti)
     } else if (tsm) {
       loader = fileURLToPath(tsm)
     } else {
@@ -76,7 +76,7 @@ if (files.some(i => i.endsWith('.ts'))) {
       process.exit(1)
     }
   } else {
-    loader = 'jiti'
+    loader = 'tsx'
   }
   base.push('--enable-source-maps')
   if (loader.includes('tsm') || process.version.startsWith('v18')) {
