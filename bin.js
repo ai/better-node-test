@@ -55,24 +55,19 @@ if (files.length === 0) {
 if (files.some(i => i.endsWith('.ts'))) {
   let loader
   if (typeof import.meta.resolve === 'function') {
-    let tsx, jiti, tsm
+    let tsx, tsm
     try {
       tsx = import.meta.resolve('tsx')
-    } catch {}
-    try {
-      jiti = import.meta.resolve('jiti')
     } catch {}
     try {
       tsm = import.meta.resolve('tsm')
     } catch {}
     if (tsx) {
       loader = fileURLToPath(tsx)
-    } else if (jiti) {
-      loader = fileURLToPath(jiti)
     } else if (tsm) {
       loader = fileURLToPath(tsm)
     } else {
-      process.stderr.write('Install jiti, tsx or tsm to run TypeScript tests\n')
+      process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
       process.exit(1)
     }
   } else {

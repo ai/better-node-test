@@ -23,7 +23,7 @@ Install CLI:
 npm install --save-dev better-node-test
 ```
 
-For TypeScript you will also need `tsx` (or you can use `jiti` or `tsm`):
+For TypeScript you will also need `tsx` (or you can use `tsm`):
 
 ```sh
 npm install --save-dev better-node-test tsx
