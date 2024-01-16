@@ -73,13 +73,7 @@ if (files.some(i => i.endsWith('.ts'))) {
   } else {
     loader = 'tsx'
   }
-  base.push('--enable-source-maps')
-  if (loader.includes('tsm') || process.version.startsWith('v18')) {
-    env.NODE_NO_WARNINGS = '1'
-    base.push('--loader', loader)
-  } else {
-    base.push('--import', loader)
-  }
+  base.push('--enable-source-maps', '--import', loader)
 }
 
 spawn('node', [...base, ...args, ...files], {
