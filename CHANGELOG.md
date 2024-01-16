@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.5.0
+* Fixed Node.js 18 TypeScript support by requiring Node.js ≥18.19.
+
 ## 0.4.1
 * Remove all warning suppression for `tsx`.
 * Remove `jiti` support since it has no loader support yet.
