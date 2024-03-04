@@ -29,10 +29,10 @@
   },
   "scripts": {
     "test:lint": "eslint .",
-    "test:help": "./bin.js --help | ./test/find.js Usage",
-    "test:only": "./bin.js -t two | ./test/find.js 'skipped 2'",
-    "test:pathless": "./bin.js | ./test/find.js 'tests 3'",
-    "test:path": "./bin.js test/*.test.js | ./test/find.js 'tests 1'",
+    "test:help": "./bin.js --help | node test/find.js Usage",
+    "test:only": "./bin.js -t two | node test/find.js 'skipped 2'",
+    "test:pathless": "./bin.js | node test/find.js 'tests 3'",
+    "test:path": "./bin.js test/*.test.js | node test/find.js 'tests 1'",
     "test": "pnpm run /^test:/"
   },
   "devDependencies": {
@@ -41,9 +41,6 @@
     "eslint": "^8.57.0",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3"
-  },
-  "eslintConfig": {
-    "extends": "@logux/eslint-config"
   },
   "prettier": {
     "arrowParens": "avoid",
