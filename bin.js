@@ -3,7 +3,6 @@
 import { spawn } from 'node:child_process'
 import { lstat, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import { fileURLToPath, pathToFileURL } from 'node:url'
 
 let base = ['--test', '--test-reporter', 'spec']
 let env = { ...process.env }
@@ -72,11 +71,6 @@ if (files.some(i => i.endsWith('.ts'))) {
     }
   } else {
     loader = 'tsx'
-  }
-  if (loader.startsWith('file:')) {
-    loader = fileURLToPath(loader)
-  } else if (/^\w:/.test(loader) && process.platform === 'win32') {
-    loader = pathToFileURL(loader).href
   }
   base.push('--enable-source-maps', '--import', loader)
 }
