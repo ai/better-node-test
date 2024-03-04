@@ -3,7 +3,7 @@
 import { spawn } from 'node:child_process'
 import { lstat, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 let base = ['--test', '--test-reporter', 'spec']
 let env = { ...process.env }
@@ -63,15 +63,20 @@ if (files.some(i => i.endsWith('.ts'))) {
       tsm = import.meta.resolve('tsm')
     } catch {}
     if (tsx) {
-      loader = tsx.startsWith('file:') ? fileURLToPath(tsx) : tsx
+      loader = tsx
     } else if (tsm && tsx.startsWith('file:')) {
-      loader = tsm.startsWith('file:') ? fileURLToPath(tsm) : tsm
+      loader = tsm
     } else {
       process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
       process.exit(1)
     }
   } else {
     loader = 'tsx'
+  }
+  if (loader.startsWith('file:')) {
+    loader = fileURLToPath(loader)
+  } else if (/^\w:/.test(loader) && process.platform === 'win32') {
+    loader = pathToFileURL(loader).href
   }
   base.push('--enable-source-maps', '--import', loader)
 }
