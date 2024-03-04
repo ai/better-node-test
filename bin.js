@@ -63,9 +63,9 @@ if (files.some(i => i.endsWith('.ts'))) {
       tsm = import.meta.resolve('tsm')
     } catch {}
     if (tsx) {
-      loader = fileURLToPath(tsx)
-    } else if (tsm) {
-      loader = fileURLToPath(tsm)
+      loader = tsx.startsWith('file:') ? fileURLToPath(tsx) : tsx
+    } else if (tsm && tsx.startsWith('file:')) {
+      loader = tsm.startsWith('file:') ? fileURLToPath(tsm) : tsm
     } else {
       process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
       process.exit(1)
