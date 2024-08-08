@@ -33,6 +33,11 @@ function showHelp() {
   )
 }
 
+function checkNodeVersion(min) {
+  let minor = process.version.match(/v(\d+\.\d+)\./)[1]
+  return parseFloat(minor) >= min
+}
+
 let args = []
 let files = []
 for (let i = 2; i < process.argv.length; i++) {
@@ -65,14 +70,18 @@ if (files.some(i => i.endsWith('.ts'))) {
       loader = tsx
     } else if (tsm && tsx.startsWith('file:')) {
       loader = tsm
-    } else {
-      process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
-      process.exit(1)
     }
   } else {
     loader = 'tsx'
   }
-  base.push('--enable-source-maps', '--import', loader)
+  if (loader) {
+    base.push('--enable-source-maps', '--import', loader)
+  } else if (checkNodeVersion(22.6)) {
+    base.push('--experimental-strip-types')
+  } else {
+    process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
+    process.exit(1)
+  }
 }
 
 spawn('node', [...base, ...args, ...files], {
