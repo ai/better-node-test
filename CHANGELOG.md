@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.6.0
+* Added `--experimental-strip-types` support.
+
 ## 0.5.1
 * Fixed Windows support.
 
