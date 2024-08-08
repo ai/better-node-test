@@ -59,7 +59,7 @@ if (files.length === 0) {
 if (files.some(i => i.endsWith('.ts'))) {
   let loader
   if (typeof import.meta.resolve === 'function') {
-    let tsx, tsm
+    let tsm, tsx
     try {
       tsx = import.meta.resolve('tsx')
     } catch {}
