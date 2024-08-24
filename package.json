@@ -31,8 +31,9 @@
     "test:lint": "eslint .",
     "test:help": "node bin.js --help | node test/find.js Usage",
     "test:only": "node bin.js -t two | node test/find.js 'pass 3'",
-    "test:pathless": "node bin.js | node test/find.js 'tests 6'",
+    "test:pathless": "node bin.js | node test/find.js 'tests 7'",
     "test:path": "node bin.js test/*.test.js | node test/find.js 'tests 2'",
+    "test:env": "node bin.js | node test/find.js 'NODE_ENV=test'",
     "test": "pnpm run /^test:/"
   },
   "devDependencies": {

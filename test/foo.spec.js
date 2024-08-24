@@ -8,3 +8,7 @@ test('one', () => {
 test('two', () => {
   equal(2, 2)
 })
+
+test('env', () => {
+  process.stdout.write(`NODE_ENV=${process.env.NODE_ENV}\n`)
+})

@@ -85,6 +85,9 @@ if (files.some(i => i.endsWith('.ts'))) {
 }
 
 spawn('node', [...base, ...args, ...files], {
-  env,
+  env: {
+    ...env,
+    NODE_ENV: 'test'
+  },
   stdio: 'inherit'
 }).on('exit', process.exit)
