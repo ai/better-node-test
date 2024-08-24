@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.7.1
+* Fixed showing experimental types support warning.
+
 ## 0.7.0
 * Added setting `NODE_ENV` to `test`.
 
