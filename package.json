@@ -37,9 +37,9 @@
     "test": "pnpm run /^test:/"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^53.3.0",
+    "@logux/eslint-config": "^53.4.0",
     "clean-publish": "^5.0.0",
-    "eslint": "^9.8.0",
+    "eslint": "^9.9.1",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4"
   },
