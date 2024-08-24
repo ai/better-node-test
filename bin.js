@@ -77,7 +77,10 @@ if (files.some(i => i.endsWith('.ts'))) {
   if (loader) {
     base.push('--enable-source-maps', '--import', loader)
   } else if (checkNodeVersion(22.6)) {
-    base.push('--experimental-strip-types')
+    base.push(
+      '--experimental-strip-types',
+      '--disable-warning=ExperimentalWarning'
+    )
   } else {
     process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
     process.exit(1)
