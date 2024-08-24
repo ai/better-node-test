@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.7.0
+* Added setting `NODE_ENV` to `test`.
+
 ## 0.6.0
 * Added `--experimental-strip-types` support.
 
