@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.7.2
+* Fixed `--experimental-strip-types` in Node.js >22.10.
+
 ## 0.7.1
 * Fixed showing experimental types support warning.
 
