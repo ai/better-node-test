@@ -33,9 +33,17 @@ function showHelp() {
   )
 }
 
-function checkNodeVersion(min) {
-  let minor = process.version.match(/v(\d+\.\d+)\./)[1]
-  return parseFloat(minor) >= min
+function checkNodeVersion(minMinor, minPatch) {
+  let match = process.version.match(/v(\d+)\.(\d+)\./)
+  let minor = parseInt(match[1])
+  let patch = parseInt(match[2])
+  if (minMinor < minor) {
+    return true
+  } else if (minMinor === minor) {
+    return minPatch <= patch
+  } else {
+    return false
+  }
 }
 
 let args = []
@@ -76,7 +84,7 @@ if (files.some(i => i.endsWith('.ts'))) {
   }
   if (loader) {
     base.push('--enable-source-maps', '--import', loader)
-  } else if (checkNodeVersion(22.6)) {
+  } else if (checkNodeVersion(22, 6)) {
     base.push(
       '--experimental-strip-types',
       '--disable-warning=ExperimentalWarning'
