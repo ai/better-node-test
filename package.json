@@ -37,11 +37,11 @@
     "test": "pnpm run /^test:/"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^53.4.0",
-    "clean-publish": "^5.0.0",
-    "eslint": "^9.9.1",
-    "tsx": "^4.17.0",
-    "typescript": "^5.5.4"
+    "@logux/eslint-config": "^56.1.0",
+    "clean-publish": "^5.2.2",
+    "eslint": "^9.34.0",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
   },
   "prettier": {
     "arrowParens": "avoid",
