@@ -52,6 +52,8 @@ function checkNodeVersion(minMinor, minPatch) {
 let args = []
 let files = []
 
+let debugMode = false
+
 let hasExperimental = false
 function experimentalArg(...list) {
   if (!hasExperimental) {
@@ -88,6 +90,8 @@ for (let i = 2; i < process.argv.length; i++) {
   } else if (arg === '--help' || arg === '-h') {
     showHelp()
     process.exit(0)
+  } else if (arg === '--debug') {
+    debugMode = true
   } else {
     files.push(arg)
   }
@@ -123,6 +127,12 @@ if (files.some(i => i.endsWith('.ts'))) {
     process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
     process.exit(1)
   }
+}
+
+if (debugMode) {
+  process.stdout.write(
+    'NODE_ENV=test node ' + [...base, ...args, ...files].join(' ')
+  )
 }
 
 spawn('node', [...base, ...args, ...files], {
