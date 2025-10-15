@@ -39,9 +39,9 @@
   "devDependencies": {
     "@logux/eslint-config": "^56.1.0",
     "clean-publish": "^5.2.2",
-    "eslint": "^9.34.0",
-    "tsx": "^4.20.4",
-    "typescript": "^5.9.2"
+    "eslint": "^9.37.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "prettier": {
     "arrowParens": "avoid",
