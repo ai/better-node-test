@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.3
+* Fixed ignoring tests for coverage.
+
 ## 0.8.2
 * Fixed coverage exclude arguments.
 * Moved to always using native strip types for modern Node.js.
