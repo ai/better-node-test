@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.0
+* Added arguments to control coverage checks.
+
 ## 0.7.2
 * Fixed `--experimental-strip-types` in Node.js >22.10.
 
