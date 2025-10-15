@@ -9,7 +9,7 @@ process.stdin.on('data', data => {
 process.stdin.on('close', code => {
   process.stdout.write(input)
   if (process.argv[3]) {
-    let major = process.version.match(/v\d+\./)[1]
+    let major = process.version.match(/v(\d+)\./)[1]
     if (process.argv[3].split(',').includes(major)) {
       if (code === 0) {
         process.stderr.write('No exit code 1 on non-supported Node.js')
