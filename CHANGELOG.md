@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.1
+* Added error message on coverage usage on old Node.js.
+
 ## 0.8.0
 * Added arguments to control coverage checks.
 
