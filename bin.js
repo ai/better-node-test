@@ -80,6 +80,8 @@ for (let i = 2; i < process.argv.length; i++) {
           '--experimental-test-coverage',
           '--test-coverage-exclude',
           '"**/*.test.*"',
+          '--test-coverage-exclude',
+          '"**/test/**"',
           `--test-coverage-lines=${threshold}`
         )
       )
