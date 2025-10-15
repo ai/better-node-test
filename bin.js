@@ -71,14 +71,19 @@ for (let i = 2; i < process.argv.length; i++) {
   } else if (arg === '--coverage-exclude') {
     args.push(`--test-coverage-exclude="${process.argv[++i]}"`)
   } else if (arg === '--coverage') {
-    let threshold = process.argv[++i]
-    args.push(
-      ...experimentalArg(
-        '--experimental-test-coverage',
-        '--test-coverage-exclude="**/*.test.*"',
-        `--test-coverage-lines=${threshold}`
+    if (checkNodeVersion(22, 6)) {
+      let threshold = process.argv[++i]
+      args.push(
+        ...experimentalArg(
+          '--experimental-test-coverage',
+          '--test-coverage-exclude="**/*.test.*"',
+          `--test-coverage-lines=${threshold}`
+        )
       )
-    )
+    } else {
+      process.stderr.write('You need Node.js >= 22.8 to use test coverage\n')
+      process.exit(1)
+    }
   } else if (arg === '--help' || arg === '-h') {
     showHelp()
     process.exit(0)
