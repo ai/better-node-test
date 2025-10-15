@@ -67,16 +67,17 @@ for (let i = 2; i < process.argv.length; i++) {
   if (arg === '-t') {
     args.push(`--test-name-pattern=${process.argv[++i]}`)
   } else if (arg === '--coverage-include') {
-    args.push(`--test-coverage-include="${process.argv[++i]}"`)
+    args.push(`--test-coverage-include`, process.argv[++i])
   } else if (arg === '--coverage-exclude') {
-    args.push(`--test-coverage-exclude="${process.argv[++i]}"`)
+    args.push(`--test-coverage-exclude`, process.argv[++i])
   } else if (arg === '--coverage') {
     if (checkNodeVersion(22, 6)) {
       let threshold = process.argv[++i]
       args.push(
         ...experimentalArg(
           '--experimental-test-coverage',
-          '--test-coverage-exclude="**/*.test.*"',
+          '--test-coverage-exclude',
+          '"**/*.test.*"',
           `--test-coverage-lines=${threshold}`
         )
       )
