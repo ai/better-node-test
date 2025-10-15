@@ -1,10 +1,12 @@
 import { equal } from 'node:assert'
 import { test } from 'node:test'
 
+import { one } from './foo.js'
+
 test('one', () => {
-  equal(1, 1)
+  equal(one(), 1)
 })
 
 test('two', () => {
-  equal(2, 2)
+  equal(one() + one(), 2)
 })

@@ -29,6 +29,7 @@
   },
   "scripts": {
     "test:lint": "eslint .",
+    "test:coverage": "node bin.js --coverage 100 --coverage-exclude '!test/**' test/*.test.js | node test/find.js 'coverage does not meet'",
     "test:help": "node bin.js --help | node test/find.js Usage",
     "test:only": "node bin.js -t two | node test/find.js 'pass 3'",
     "test:pathless": "node bin.js | node test/find.js 'tests 7'",

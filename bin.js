@@ -29,7 +29,10 @@ function showHelp() {
     `Usage: bnt [options] [files]\n` +
       '\n' +
       'Options\n' +
-      '  -t <pattern>  Run tests matching pattern\n'
+      '  -t <pattern>                 Run tests matching pattern\n' +
+      '  --coverage <threshold>       Set coverage lines threshold\n' +
+      '  --coverage-include <pattern> Include files to test coverage\n' +
+      '  --coverage-exclude <pattern> Exclude files from test coverage\n'
   )
 }
 
@@ -48,10 +51,34 @@ function checkNodeVersion(minMinor, minPatch) {
 
 let args = []
 let files = []
+
+let hasExperimental = false
+function experimentalArg(...list) {
+  if (!hasExperimental) {
+    hasExperimental = true
+    return ['--disable-warning=ExperimentalWarning', ...list]
+  } else {
+    return list
+  }
+}
+
 for (let i = 2; i < process.argv.length; i++) {
   let arg = process.argv[i]
   if (arg === '-t') {
     args.push(`--test-name-pattern=${process.argv[++i]}`)
+  } else if (arg === '--coverage-include') {
+    args.push(`--test-coverage-include="${process.argv[++i]}"`)
+  } else if (arg === '--coverage-exclude') {
+    args.push(`--test-coverage-exclude="${process.argv[++i]}"`)
+  } else if (arg === '--coverage') {
+    let threshold = process.argv[++i]
+    args.push(
+      ...experimentalArg(
+        '--experimental-test-coverage',
+        '--test-coverage-exclude="**/*.test.*"',
+        `--test-coverage-lines=${threshold}`
+      )
+    )
   } else if (arg === '--help' || arg === '-h') {
     showHelp()
     process.exit(0)
@@ -85,10 +112,7 @@ if (files.some(i => i.endsWith('.ts'))) {
   if (loader) {
     base.push('--enable-source-maps', '--import', loader)
   } else if (checkNodeVersion(22, 6)) {
-    base.push(
-      '--experimental-strip-types',
-      '--disable-warning=ExperimentalWarning'
-    )
+    base.push(...experimentalArg('--experimental-strip-types'))
   } else {
     process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
     process.exit(1)
