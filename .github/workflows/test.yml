@@ -24,7 +24,7 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --ignore-scripts
-      - name: Run unit tests
+      - name: Run all tests
         run: pnpm test
   short:
     runs-on: ubuntu-latest
@@ -69,5 +69,5 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --ignore-scripts
-      - name: Run unit tests
+      - name: Run unit test
         run: node bin.js -t two
