@@ -4,6 +4,7 @@ The CLI shortcut for [`node --test`](https://nodejs.org/api/test.html) with:
 
 * **TypeScript** support.
 * `-t` **shortcut** to run special test.
+* `--coverage` to check test coverage.
 
 <p align="center">
   <img src="./screenshot.png" alt="Better Node Test CLI" width="721">
@@ -15,18 +16,10 @@ The CLI shortcut for [`node --test`](https://nodejs.org/api/test.html) with:
 
 ---
 
-## Usage
-
 Install CLI:
 
 ```sh
 npm install --save-dev better-node-test
-```
-
-For TypeScript you will also need `tsx` (or you can use `tsm`):
-
-```sh
-npm install --save-dev better-node-test tsx
 ```
 
 To run all tests with `*.test.ts` or `*.test.js`:
@@ -40,3 +33,11 @@ To run special test:
 ```sh
 npx bnt ./test/request.test.ts -t 'uses HTTPS'
 ```
+
+To run test coverage:
+
+```sh
+npx bnt --coverage 100 --coverage-exclude '**/*.test.*'
+```
+
+Use `/* node:coverage ignore next 2 */` comments to ignore lines.
