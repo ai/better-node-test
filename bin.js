@@ -9,14 +9,14 @@ let env = { ...process.env }
 
 const IGNORE = new Set(['.git', 'node_modules'])
 
-async function findFiles(dir, filter, callback) {
+async function findFiles(dir, filter) {
   let found = []
   for (let name of await readdir(dir)) {
     if (IGNORE.has(name)) continue
     let filename = join(dir, name)
     let stat = await lstat(filename)
     if (stat.isDirectory()) {
-      found.push(...(await findFiles(filename, filter, callback)))
+      found.push(...(await findFiles(filename, filter)))
     } else if (filter.test(name)) {
       found.push(filename)
     }
