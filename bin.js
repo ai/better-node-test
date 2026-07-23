@@ -104,31 +104,7 @@ if (files.length === 0) {
 }
 
 if (files.some(i => i.endsWith('.ts'))) {
-  let loader
-  if (typeof import.meta.resolve === 'function') {
-    let tsm, tsx
-    try {
-      tsx = import.meta.resolve('tsx')
-    } catch {}
-    try {
-      tsm = import.meta.resolve('tsm')
-    } catch {}
-    if (tsx) {
-      loader = tsx
-    } else if (tsm && tsx.startsWith('file:')) {
-      loader = tsm
-    }
-  } else {
-    loader = 'tsx'
-  }
-  if (checkNodeVersion(22, 6)) {
-    base.push(...experimentalArg('--experimental-strip-types'))
-  } else if (loader) {
-    base.push('--enable-source-maps', '--import', loader)
-  } else {
-    process.stderr.write('Install tsx or tsm to run TypeScript tests\n')
-    process.exit(1)
-  }
+  base.push(...experimentalArg('--experimental-strip-types'))
 }
 
 if (debugMode) {
