@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.0
+
+- Added npm provenance.
+- Removed Node.js 18 & 20 support.
+
 ## 0.8.4
 
 - Improved docs for coverage.
