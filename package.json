@@ -35,13 +35,12 @@
     "test": "pnpm run /^test:/"
   },
   "devDependencies": {
-    "@logux/oxc-configs": "^1.0.0",
-    "@types/node": "^26.1.1",
-    "actions-up": "^1.16.0",
-    "eslint": "^10.7.0",
+    "@logux/oxc-configs": "^1.2.0",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.15.0",
     "eslint-plugin-prefer-let": "^4.2.2",
-    "oxlint": "^1.75.0",
-    "oxlint-tsgolint": "^7.0.2001",
+    "oxlint": "^1.94.0",
+    "oxlint-tsgolint": "^7.0.2007",
     "typescript": "^7.0.2"
   },
   "engines": {
