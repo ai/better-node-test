@@ -1,6 +1,6 @@
 {
   "name": "better-node-test",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The CLI shortcut for node --test runner with TypeScript",
   "keywords": [
     "node",
@@ -31,8 +31,8 @@
     "test:case:only": "node bin.js -t two | node test/find.js 'pass 3'",
     "test:case:pathless": "node bin.js | node test/find.js 'tests 7'",
     "test:case:path": "node bin.js test/*.test.js | node test/find.js 'tests 2'",
-    "test:case:node-args":"node bin.js --test-force-exit test/hang.js | node test/find.js 'pass 1'",
-    "test:case:env":"node bin.js | node test/find.js 'NODE_ENV=test'",
+    "test:case:node-args": "node bin.js --test-force-exit test/hang.js | node test/find.js 'pass 1'",
+    "test:case:env": "node bin.js | node test/find.js 'NODE_ENV=test'",
     "test": "pnpm run /^test:/"
   },
   "devDependencies": {

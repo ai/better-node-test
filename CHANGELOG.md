@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.0
+
+- Pass any unknown argument starting with `-` to Node.js.
+
 ## 1.0.0
 
 - Added npm provenance.
