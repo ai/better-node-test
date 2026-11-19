@@ -43,3 +43,12 @@ npx bnt --coverage 100 --coverage-exclude '**/*.test.*'
 ```
 
 Use `/* node:coverage ignore next 2 */` comments to ignore lines.
+
+Any other option will be passed to Node.js. For instance, to exit
+after all tests even with active timers or open connections:
+
+```sh
+npx bnt --test-force-exit
+```
+
+Use `=` for arguments with values: `--test-concurrency=1`.

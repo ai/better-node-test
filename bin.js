@@ -33,7 +33,8 @@ function showHelp() {
       '  --coverage <threshold>       Set coverage lines threshold\n' +
       '  --coverage-include <pattern> Include files to test coverage\n' +
       '  --coverage-exclude <pattern> Exclude files from test coverage\n' +
-      '  --force-exit                 Exit after tests even with active handles\n'
+      '\n' +
+      'Other options will be passed to Node.js\n'
   )
 }
 
@@ -90,13 +91,13 @@ for (let i = 2; i < process.argv.length; i++) {
       process.stderr.write('You need Node.js >= 22.8 to use test coverage\n')
       process.exit(1)
     }
-  } else if (arg === '--force-exit') {
-    args.push('--test-force-exit')
   } else if (arg === '--help' || arg === '-h') {
     showHelp()
     process.exit(0)
   } else if (arg === '--debug') {
     debugMode = true
+  } else if (arg.startsWith('-')) {
+    args.push(arg)
   } else {
     files.push(arg)
   }
